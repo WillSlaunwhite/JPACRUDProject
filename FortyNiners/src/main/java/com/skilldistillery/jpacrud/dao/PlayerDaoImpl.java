@@ -1,5 +1,6 @@
 package com.skilldistillery.jpacrud.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,5 +29,23 @@ public class PlayerDaoImpl implements PlayerDao {
 		String jpql = "SELECT p FROM Player p";
 		return em.createQuery(jpql, Player.class).getResultList();
 	}
-
+	
+	@Override
+	public List<Player> findByFirstName(String name) {
+		System.out.println(name);
+		String jpql = "SELECT p FROM Player p";
+//		em.setProperty("firstname", name);
+		List<Player> players = em.createQuery(jpql, Player.class).getResultList();
+		List<Player> listWithFirstName = new ArrayList<Player>();
+		
+		for(Player player : players) {
+			if(player.getFirstName().equals(name)) {
+				listWithFirstName.add(player);
+			}
+		}
+		
+		
+		return listWithFirstName;
+	}
+	
 }

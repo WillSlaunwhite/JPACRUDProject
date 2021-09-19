@@ -16,17 +16,25 @@
 	<form class="form" action="getPlayer.do" method="GET">
 		Player ID: <input type="text" name="pid" /> <input class="btn-btn-primary" type="submit"
 			value="Show Player" />
+	</form>
 
-	<div>
+
+
+	<form class="form" action="getPlayerByFirstName.do" method="GET">
+	Player First Name: <input type="text" name="name"/><input class="btn-btn-primary" type="submit" value="Show Players"/>
+	</form>
+	
+	
+	<%-- div>
 		<c:forEach var="p" items="${players }">
-			<%-- <h5>${p}</h5> --%>
-<%-- 			<h5>${p.firstName} ${p.lastName }</h5> --%>		
+			<h5>${p}</h5>
+			<h5>${p.firstName} ${p.lastName }</h5>		
 			<div>
-				<h5>${player.number}	${player.position}	${player.firstName}	${player.lastName}</h5>
-				<p>Age: ${player.age}	Height: ${player.height}	Weight: ${player.weight}	Years of Experience: ${player.experience}	College: ${player.college}</p>
+				<h5>${p.number}	${p.position}	${p.firstName}	${p.lastName}</h5>
+				<p>Age: ${p.age}	Height: ${p.height}	Weight: ${p.weight}	Years of Experience: ${p.experience}	College: ${p.college}</p>
 			</div>
 		</c:forEach>
-	</div>
+	</div> --%>
 
 
 

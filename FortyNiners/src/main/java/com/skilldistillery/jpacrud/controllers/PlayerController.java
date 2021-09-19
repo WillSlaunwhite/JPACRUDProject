@@ -32,4 +32,22 @@ public class PlayerController {
 		return "showplayer";
 
 	}
+	
+	@RequestMapping(path="getPlayerByFirstName.do")
+	public String searchByName(String name, Model model) {
+		List<Player> players = dao.findByFirstName(name);
+		model.addAttribute("players", players);
+		System.out.println(name);
+		
+		if(players.size() != 0) {
+			return "showplayers";
+		}
+		else {
+			return "empty";
+		}
+	}
+	
+	
+	
+	
 }
