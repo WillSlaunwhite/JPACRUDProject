@@ -15,7 +15,7 @@ public class Player {
 	private String position;
 	private int number;
 	private int age;
-	private int height;
+	private double height;
 	private int weight;
 	private int experience;
 	private String college;
@@ -101,7 +101,7 @@ public class Player {
 		this.age = age;
 	}
 
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 

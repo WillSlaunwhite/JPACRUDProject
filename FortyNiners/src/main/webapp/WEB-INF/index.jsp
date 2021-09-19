@@ -13,12 +13,18 @@
 </head>
 <body>
 	<h3>San Francisco 49ers</h3>
-
+	<form class="form" action="getPlayer.do" method="GET">
+		Player ID: <input type="text" name="pid" /> <input class="btn-btn-primary" type="submit"
+			value="Show Player" />
 
 	<div>
 		<c:forEach var="p" items="${players }">
-			<h5>${p}</h5>
+			<%-- <h5>${p}</h5> --%>
 <%-- 			<h5>${p.firstName} ${p.lastName }</h5> --%>		
+			<div>
+				<h5>${player.number}	${player.position}	${player.firstName}	${player.lastName}</h5>
+				<p>Age: ${player.age}	Height: ${player.height}	Weight: ${player.weight}	Years of Experience: ${player.experience}	College: ${player.college}</p>
+			</div>
 		</c:forEach>
 	</div>
 

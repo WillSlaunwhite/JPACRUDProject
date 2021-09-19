@@ -24,6 +24,12 @@ public class PlayerController {
 		return "index";
 	}
 	
-//	@RequestMapping(path="getPlayer.do")
-//	public 
+	@RequestMapping(path="getPlayer.do")
+	public String showPlayer(Integer pid, Model model) {
+		Player player = dao.findPlayerById(pid);
+		model.addAttribute("player", player);
+		
+		return "showplayer";
+
+	}
 }
