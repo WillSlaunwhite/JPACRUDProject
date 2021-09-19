@@ -12,6 +12,14 @@ public class Player {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	private String position;
+	private int number;
+	private int age;
+	private int height;
+	private int weight;
+	private int experience;
+	private String college;
+	
 	@Column(name="first_name")
 	private String firstName;
 	
@@ -19,14 +27,32 @@ public class Player {
 	private String lastName;
 	
 	public Player() {}
-	
-	public Player(int id, String firstName, String lastName) {
+
+	public Player(int id, String position, int number, String firstName, String lastName) {
 		super();
 		this.id = id;
+		this.position = position;
+		this.number = number;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-	
+
+
+	public Player(int id, String position, int number, int age, int height, int weight, int experience, String college,
+			String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.position = position;
+		this.number = number;
+		this.age = age;
+		this.height = height;
+		this.weight = weight;
+		this.experience = experience;
+		this.college = college;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -51,10 +77,69 @@ public class Player {
 		this.lastName = lastName;
 	}
 
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+
+	public String getCollege() {
+		return college;
+	}
+
+	public void setCollege(String college) {
+		this.college = college;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Player [id=").append(id).append(", firstName=").append(firstName).append("]");
+		builder.append("Player [id=").append(id).append(", position=").append(position).append(", number=")
+				.append(number).append(", age=").append(age).append(", height=").append(height).append(", weight=")
+				.append(weight).append(", experience=").append(experience).append(", college=").append(college)
+				.append(", firstName=").append(firstName).append(", lastName=").append(lastName).append("]");
 		return builder.toString();
 	}
 
