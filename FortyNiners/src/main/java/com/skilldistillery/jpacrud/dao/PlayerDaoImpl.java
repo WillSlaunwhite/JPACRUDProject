@@ -21,7 +21,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	
 	@Override
 	public Player findPlayerById(int id) {
-		return em.find(Player.class, id);
+		return em.createQuery(jpql + " WHERE id = :id", Player.class).setParameter("id", id).getSingleResult();
 	}
 
 	@Override
@@ -41,7 +41,6 @@ public class PlayerDaoImpl implements PlayerDao {
 				listWithFirstName.add(player);
 			}
 		}
-		
 		
 		return listWithFirstName;
 	}
@@ -80,19 +79,16 @@ public class PlayerDaoImpl implements PlayerDao {
 		return player;
 	}
 
-	public Player removePlayerByLastName(String playerLastName) {
+	public Player removePlayerByLastName(String lastName) {
 		List<Player> players = em.createQuery(jpql, Player.class).getResultList();
 		Player deletedPlayer = null;
-		System.out.println(players + " 1 ");
 		
-		if(playerLastName == null || playerLastName.equals("")) {
-			System.out.println("player last name null");
+		if(lastName == null || lastName.equals("")) {
 			return null;
 		}
 		
 		for(Player player : players) {
-			if(player.getLastName().toLowerCase().equals(playerLastName.toLowerCase())) {
-				System.out.println(player + " 2 ");
+			if(player.getLastName().toLowerCase().equals(lastName.toLowerCase())) {
 				
 				deletedPlayer = player;
 				em.createQuery("DELETE FROM Player p WHERE p.lastName = :lastname").setParameter("lastname", player.getLastName()).executeUpdate();
@@ -101,7 +97,6 @@ public class PlayerDaoImpl implements PlayerDao {
 			}
 		}
 //		System.out.println(players);
-		System.out.println(deletedPlayer + " 3 ");
 		return deletedPlayer;
 	}
 	

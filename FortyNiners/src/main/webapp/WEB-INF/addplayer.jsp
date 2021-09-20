@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Add failed.
+Successfully added player ${player.firstName } ${player.lastName}
 </body>
 </html>

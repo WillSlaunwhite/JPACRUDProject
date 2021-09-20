@@ -13,6 +13,9 @@
 </head>
 <body>
 	<h3>San Francisco 49ers</h3>
+	<form class="form" action="showAll.do" method="GET">
+	Show All: <input class="btn-btn-primary" type="submit" value="Show All"/>
+	</form>
 	<form class="form" action="findPlayerById.do" method="GET">
 		Player ID: <input type="text" name="pid" /> <input class="btn-btn-primary" type="submit"
 			value="Show Player" />
@@ -46,7 +49,7 @@
 	</form>
 
 	<form class="form" action="removePlayerByLastName.do" method="GET">
-	Player Last Name: <input type="text" name="playerLastName"/><br>	
+	Player Last Name: <input type="text" name="lastName"/><br>	
 	<input class="btn-btn-primary" type="submit" value="Remove Player"/>
 	</form>
 

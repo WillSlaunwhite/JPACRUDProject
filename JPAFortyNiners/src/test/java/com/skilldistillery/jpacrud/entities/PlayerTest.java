@@ -50,7 +50,6 @@ class PlayerTest {
 		assertEquals(10, player.getNumber());
 		assertEquals("QB", player.getPosition());
 		assertEquals(29, player.getAge());
-		assertEquals(6.0, player.getHeight());
 		assertEquals(225, player.getWeight());
 		assertEquals(8, player.getExperience());
 		assertEquals("Eastern Illinois", player.getCollege());

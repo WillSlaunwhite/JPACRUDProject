@@ -9,24 +9,24 @@ import javax.persistence.Id;
 @Entity
 public class Player {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String position;
 	private int number;
 	private int age;
-	private double height;
 	private int weight;
 	private int experience;
 	private String college;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	public Player() {}
+
+	public Player() {
+	}
 
 	public Player(String position, String firstName, String lastName, int number) {
 		super();
@@ -36,13 +36,12 @@ public class Player {
 		this.lastName = lastName;
 	}
 
-
-	public Player(String position, String firstName, String lastName, int number, int age, int height, int weight, int experience, String college) {
+	public Player(String position, String firstName, String lastName, int number, int age, int weight,
+			int experience, String college) {
 		super();
 		this.position = position;
 		this.number = number;
 		this.age = age;
-		this.height = height;
 		this.weight = weight;
 		this.experience = experience;
 		this.college = college;
@@ -98,14 +97,6 @@ public class Player {
 		this.age = age;
 	}
 
-	public double getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
 	public int getWeight() {
 		return weight;
 	}
@@ -134,7 +125,7 @@ public class Player {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Player [id=").append(id).append(", position=").append(position).append(", number=")
-				.append(number).append(", age=").append(age).append(", height=").append(height).append(", weight=")
+				.append(number).append(", age=").append(age).append(", height=").append(", weight=")
 				.append(weight).append(", experience=").append(experience).append(", college=").append(college)
 				.append(", firstName=").append(firstName).append(", lastName=").append(lastName).append("]");
 		return builder.toString();

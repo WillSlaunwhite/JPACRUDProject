@@ -11,10 +11,23 @@
 	<h4>Number of Results: ${players.size() }</h4>
 	<div>
 		<c:forEach var="p" items="${players }">
-			<div>
-				<h2>${p.number}	${p.position}	${p.firstName}	${p.lastName}</h5>
-				<p>Age: ${p.age}	Height: ${p.height}	Weight: ${p.weight}	Years of Experience: ${p.experience}	College: ${p.college}</p>
-			</div>
+		
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Number</th>
+		      <th scope="col">Position</th>
+		      <th scope="col">Name</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">${p.number}</th>
+		      <td>${p.position}</td>
+		      <td>${p.firstName} ${p.lastName}</td>
+		    </tr>
+		  </tbody>
+		</table>
 		</c:forEach>
 	</div>
 </body>

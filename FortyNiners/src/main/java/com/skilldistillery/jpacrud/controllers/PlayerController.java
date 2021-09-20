@@ -23,23 +23,29 @@ public class PlayerController {
 		return "index";
 	}
 	
+	@RequestMapping(path="showAll.do")
+	public String showAll(Model model) {
+		List<Player> players = dao.findAll();
+		model.addAttribute("players", players);
+		return "showplayers";
+	}
+	
 	@RequestMapping(path="findPlayerById.do")
 	public String showPlayer(Integer pid, Model model) {
-		if(pid == null) { return "empty"; }
+		if(pid == null) { return "index"; }
 		
 		Player player = dao.findPlayerById(pid);
 		model.addAttribute("player", player);
 		
 		if(player!=null) { return "showplayer"; }
 		
-		else { return "empty"; }
+		else { return "playernotfound"; }
 
 	}
 	
 	@RequestMapping(path="getPlayerByFirstName.do")
 	public String searchByFirstName(String name, Model model) {
-		List<Player> players = null;
-		players = dao.findByFirstName(name);
+		List<Player> players = dao.findByFirstName(name);
 		model.addAttribute("players", players);
 		
 		if(players == null || players.size() == 0) {
@@ -51,8 +57,7 @@ public class PlayerController {
 	
 	@RequestMapping(path="getPlayerByLastName.do")
 	public String searchByLastName(String name, Model model) {
-		List<Player> players = null;
-		players = dao.findByLastName(name);
+		List<Player> players = dao.findByLastName(name);
 		model.addAttribute("players", players);
 		
 		if(players == null || players.size() == 0) {
@@ -64,20 +69,18 @@ public class PlayerController {
 	
 	@RequestMapping(path="addPlayer.do")
 	public String addPlayer(String firstName, String lastName, String position, int number, Model model) {
-		Player player = null;
-		player = dao.addPlayer(firstName, lastName, position, number);
+		Player player = dao.addPlayer(firstName, lastName, position, number);
 		model.addAttribute("player", player);
 		
 		if(player != null) {
-			return "showplayer";
+			return "addplayer";
 		} else { return "addfail"; }
 		
 	}
 	
 	@RequestMapping(path="removePlayerByLastName.do")
-	public String removePlayer(String playerLastName, Model model) {
-		Player player = null;
-		player = dao.removePlayerByLastName(playerLastName);
+	public String removePlayer(String lastName, Model model) {
+		Player player = dao.removePlayerByLastName(lastName);
 		model.addAttribute("player", player);
 		
 		if(player != null) {
@@ -86,4 +89,11 @@ public class PlayerController {
 		
 	}
 	
+//	@RequestMapping(path="updatePlayer.do")
+//	public String updatePlayer(String firstName, String lastName, String position, int number, int age, int height, int weight, int experience, String college, Model model) {
+//		
+//		
+//		return null;
+//	}
+//	
 }

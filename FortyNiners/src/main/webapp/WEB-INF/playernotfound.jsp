@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Add failed.
+Player not found.
 </body>
 </html>
