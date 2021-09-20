@@ -25,6 +25,8 @@ public class PlayerController {
 	
 	@RequestMapping(path="findPlayerById.do")
 	public String showPlayer(Integer pid, Model model) {
+		if(pid == null) { return "empty"; }
+		
 		Player player = dao.findPlayerById(pid);
 		model.addAttribute("player", player);
 		
@@ -70,6 +72,17 @@ public class PlayerController {
 			return "showplayer";
 		} else { return "addfail"; }
 		
+	}
+	
+	@RequestMapping(path="removePlayerByLastName.do")
+	public String removePlayer(String playerLastName, Model model) {
+		Player player = null;
+		player = dao.removePlayerByLastName(playerLastName);
+		model.addAttribute("player", player);
+		
+		if(player != null) {
+			return "deletedplayer";
+		} else { return "empty"; }
 		
 	}
 	

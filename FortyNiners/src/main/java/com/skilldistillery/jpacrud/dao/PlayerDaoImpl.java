@@ -17,6 +17,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	@PersistenceContext
 	private EntityManager em;
 	String jpql = "SELECT p FROM Player p";
+//	List<Player> players = em.createQuery(jpql, Player.class).getResultList();
 	
 	@Override
 	public Player findPlayerById(int id) {
@@ -69,15 +70,40 @@ public class PlayerDaoImpl implements PlayerDao {
 	}
 	@Override
 	public Player addPlayer(String firstName, String lastName, String position, int number) {
-		Player player = new Player(firstName, lastName, position, number);
+		Player player = new Player();
+		player.setFirstName(firstName);
+		player.setLastName(lastName);
+		player.setNumber(number);
+		player.setPosition(position);
 		em.persist(player);
 		
 		return player;
 	}
 
-//	public Player removePlayerByLastName(String lastName) {
-//		
-//	}
+	public Player removePlayerByLastName(String playerLastName) {
+		List<Player> players = em.createQuery(jpql, Player.class).getResultList();
+		Player deletedPlayer = null;
+		System.out.println(players + " 1 ");
+		
+		if(playerLastName == null || playerLastName.equals("")) {
+			System.out.println("player last name null");
+			return null;
+		}
+		
+		for(Player player : players) {
+			if(player.getLastName().toLowerCase().equals(playerLastName.toLowerCase())) {
+				System.out.println(player + " 2 ");
+				
+				deletedPlayer = player;
+				em.createQuery("DELETE FROM Player p WHERE p.lastName = :lastname").setParameter("lastname", player.getLastName()).executeUpdate();
+//				em.createQuery(query, Player.class).setParameter("lastname", player.getLastName());
+//				em.createQuery(query).setParameter("lastname", player.getLastName());
+			}
+		}
+//		System.out.println(players);
+		System.out.println(deletedPlayer + " 3 ");
+		return deletedPlayer;
+	}
 	
 	@Override
 	public List<Player> findByPosition(String position) {

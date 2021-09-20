@@ -13,4 +13,5 @@ public interface PlayerDao {
 	Player findByNumber(int number);
 	Player addPlayer();
 	Player addPlayer(String firstName, String lastName, String position, int number);
+	Player removePlayerByLastName(String lastName);
 }

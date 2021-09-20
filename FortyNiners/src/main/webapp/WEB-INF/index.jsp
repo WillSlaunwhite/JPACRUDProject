@@ -45,6 +45,10 @@
 	<input class="btn-btn-primary" type="submit" value="Add Player"/>
 	</form>
 
+	<form class="form" action="removePlayerByLastName.do" method="GET">
+	Player Last Name: <input type="text" name="playerLastName"/><br>	
+	<input class="btn-btn-primary" type="submit" value="Remove Player"/>
+	</form>
 
 
 
