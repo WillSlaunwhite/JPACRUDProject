@@ -10,7 +10,7 @@
 You have successfully deleted the player.
 	<div>
 		<h2>${player.number}	${player.position}	${player.firstName}	${player.lastName}</h5>
-		<p>Age: ${player.age}	Height: ${player.height}	Weight: ${player.weight}	Years of Experience: ${player.experience}	College: ${player.college}</p>
+		<p>Age: ${player.age}	Weight: ${player.weight}	Years of Experience: ${player.experience}	College: ${player.college}</p>
 	</div>
 </body>
 </html>

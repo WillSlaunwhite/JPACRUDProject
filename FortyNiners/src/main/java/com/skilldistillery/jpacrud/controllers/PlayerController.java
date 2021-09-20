@@ -89,9 +89,20 @@ public class PlayerController {
 		
 	}
 	
-	@RequestMapping(path="updatePlayerByLastName.do")
-	public String updatePlayer(String firstName, String lastName, String position, int number, int age, int weight, int experience, String college, Model model) {
-		Player player = dao.updatePlayer(firstName, lastName, position, number, age, weight, experience, college);
+	@RequestMapping(path="updatePlayerPage.do")
+	public String updatePlayerPage(int id, Model model) {
+		Player player = dao.findPlayerById(id);
+		model.addAttribute("player", player);
+		
+		if(player!=null) {
+			return "editplayer";
+		} else { return "empty"; }
+		
+	}
+	
+	@RequestMapping(path="updatePlayer.do")
+	public String updatePlayer(String firstName, String lastName, String position, Integer number, Integer age, Integer weight, Integer experience, String college, Model model) {
+		Player player = dao.updatePlayer(firstName, lastName, position, number);
 		model.addAttribute("player", player);
 		
 		if(player!=null) {

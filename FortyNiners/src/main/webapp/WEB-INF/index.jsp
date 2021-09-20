@@ -55,7 +55,14 @@
 	<br><br>
 	----- Update a player -----
 	
-	<form class="form" action="updatePlayer.do" method="GET">
+	<form class="form" action="updatePlayerPage.do" method="GET">
+	ID of player you want to edit: <input type="text" name="id"/>
+	<input class="btn-btn-primary" type="submit" value="Edit Player"/>
+	</form>
+	
+	
+	
+	<!-- <form class="form" action="updatePlayer.do" method="GET">
 	Player First Name*: <input type="text" name="firstName"/>	
 	Player Last Name*: <input type="text" name="lastName"/>
 	Player Position*: <input type="text" name="position"/><br>	
@@ -65,13 +72,13 @@
 	Player Experience: <input type="number" name="experience"/>
 	Player College: <input type="text" name="college"/>
 	<input class="btn-btn-primary" type="submit" value="Add Player"/>
-	</form>
+	</form> -->
 	
 	<br><br>
 	----- Remove a player -----
 
 	<form class="form" action="removePlayerByLastName.do" method="GET">
-	Player Last Name: <input type="text" name="lastName"/><br>	
+	Player Last Name: <input type="text" name="lastName"/>
 	<input class="btn-btn-primary" type="submit" value="Remove Player"/>
 	</form>
 

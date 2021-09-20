@@ -13,6 +13,7 @@
 	<h5>Number of Results: ${players.size() }</h5>
 	<div>
 		<table class="table table-hover table-md thead-dark tbody-grey table-striped">
+		 <caption><a href="editplayer.do">Edit Player</a></caption>
 		  <thead>
 		    <tr>
 		      <th scope="col"/>

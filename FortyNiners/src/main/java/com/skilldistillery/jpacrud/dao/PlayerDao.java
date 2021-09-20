@@ -12,9 +12,9 @@ public interface PlayerDao {
 	List<Player> findByPosition(String position);
 	Player findByNumber(int number);
 	Player removePlayerByLastName(String lastName);
-	Player updatePlayer(String firstName, String lastName, String position, int number);
-	Player updatePlayer(String firstName, String lastName, String position, int number, int age, int weight, int experience, String college);
-	Player addPlayer(String firstName, String lastName, String position, int number);
-	Player addPlayer(String firstName, String lastName, String position, int number, int age, int weight,
-			int experience, String college);
+	Player updatePlayer(String firstName, String lastName, String position, Integer number);
+//	Player updatePlayer(String firstName, String lastName, String position, Integer number, Integer age, Integer weight,
+//			Integer experience, String college);
+	Player addPlayer(String firstName, String lastName, String position, Integer number);
+	Player addPlayer(String firstName, String lastName, String position, Integer number, Integer age, Integer weight, Integer experience, String college);
 }

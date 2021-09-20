@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpacrud.entities.Player;
@@ -62,7 +63,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	}
 	
 	@Override
-	public Player addPlayer(String firstName, String lastName, String position, int number) {
+	public Player addPlayer(String firstName, String lastName, String position, Integer number) {
 		Player player = new Player();
 		player.setFirstName(firstName);
 		player.setLastName(lastName);
@@ -73,7 +74,7 @@ public class PlayerDaoImpl implements PlayerDao {
 	}
 	
 	@Override
-	public Player addPlayer(String firstName, String lastName, String position, int number, int age, int weight, int experience, String college) {
+	public Player addPlayer(String firstName, String lastName, String position, Integer number, Integer age, Integer weight, Integer experience, String college) {
 		Player player = new Player();
 		player.setFirstName(firstName);
 		player.setLastName(lastName);
@@ -106,33 +107,48 @@ public class PlayerDaoImpl implements PlayerDao {
 	}
 	
 	@Override
-	public Player updatePlayer(String firstName, String lastName, String position, int number) {
-		Player player = em.createQuery("UPDATE Player p SET p.firstName = :fname, p.lastName = :lname, p.position = :position, p.number = :number", Player.class)
+	@Modifying
+	public Player updatePlayer(String firstName, String lastName, String position, Integer number) {
+		List<Player> players = em.createQuery(jpql, Player.class).getResultList();
+		Player updatedPlayer = null;
+		
+		if(lastName == null || lastName.equals("")) {
+			return null;
+		}
+		
+		for(Player player : players) {
+			if(player.getLastName().toLowerCase().equals(lastName.toLowerCase())) {
+				
+				updatedPlayer = player;
+				em.createQuery("UPDATE Player p SET p.firstName = :fname, p.lastName = :lname, p.position = :position, p.number = :number")
 				.setParameter("fname", firstName)
 				.setParameter("lname", lastName)
 				.setParameter("position", position)
 				.setParameter("number", number)
-				.getSingleResult();
+				.executeUpdate();
+			}
+		}
 		
-		return player;
+		
+		return updatedPlayer;
 	}
 	
-	@Override
-	public Player updatePlayer(String firstName, String lastName, String position, int number, int age, int weight,
-			int experience, String college) {
-		Player player = em.createQuery("UPDATE Player p SET p.firstName = :fname, p.lastName = :lname, p.position = :position, p.number = :number, p.age = :age, p.weight = :weight, p.experience = :experience, p.college = :college", Player.class)
-				.setParameter("fname", firstName)
-				.setParameter("lname", lastName)
-				.setParameter("position", position)
-				.setParameter("number", number)
-				.setParameter("age", age)
-				.setParameter("weight", weight)
-				.setParameter("experience", experience)
-				.setParameter("college", college)
-				.getSingleResult();
-		
-		return player;
-	}
+//	@Override
+//	public Player updatePlayer(String firstName, String lastName, String position, int number, int age, int weight,
+//			int experience, String college) {
+//		Player player = em.createQuery("UPDATE Player p SET p.firstName = :fname, p.lastName = :lname, p.position = :position, p.number = :number, p.age = :age, p.weight = :weight, p.experience = :experience, p.college = :college", Player.class)
+//				.setParameter("fname", firstName)
+//				.setParameter("lname", lastName)
+//				.setParameter("position", position)
+//				.setParameter("number", number)
+//				.setParameter("age", age)
+//				.setParameter("weight", weight)
+//				.setParameter("experience", experience)
+//				.setParameter("college", college)
+//				.getSingleResult();
+//		
+//		return player;
+//	}
 	
 	@Override
 	public List<Player> findByPosition(String position) {
@@ -145,8 +161,5 @@ public class PlayerDaoImpl implements PlayerDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
 	
 }
