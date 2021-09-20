@@ -18,36 +18,59 @@ public class PlayerController {
 	@RequestMapping(path="/")
 	public String home(Model model) {
 		List<Player> players = dao.findAll();
-		System.out.println(players);
 		model.addAttribute("players", players);
 		
 		return "index";
 	}
 	
-	@RequestMapping(path="getPlayer.do")
+	@RequestMapping(path="findPlayerById.do")
 	public String showPlayer(Integer pid, Model model) {
 		Player player = dao.findPlayerById(pid);
 		model.addAttribute("player", player);
 		
-		return "showplayer";
+		if(player!=null) { return "showplayer"; }
+		
+		else { return "empty"; }
 
 	}
 	
 	@RequestMapping(path="getPlayerByFirstName.do")
-	public String searchByName(String name, Model model) {
-		List<Player> players = dao.findByFirstName(name);
+	public String searchByFirstName(String name, Model model) {
+		List<Player> players = null;
+		players = dao.findByFirstName(name);
 		model.addAttribute("players", players);
-		System.out.println(name);
 		
-		if(players.size() != 0) {
-			return "showplayers";
-		}
-		else {
+		if(players == null || players.size() == 0) {
 			return "empty";
+		} else { 
+			return "showplayers"; 
 		}
 	}
 	
+	@RequestMapping(path="getPlayerByLastName.do")
+	public String searchByLastName(String name, Model model) {
+		List<Player> players = null;
+		players = dao.findByLastName(name);
+		model.addAttribute("players", players);
+		
+		if(players == null || players.size() == 0) {
+			return "empty";
+		} else { 
+			return "showplayers"; 
+		}
+	}
 	
-	
+	@RequestMapping(path="addPlayer.do")
+	public String addPlayer(String firstName, String lastName, String position, int number, Model model) {
+		Player player = null;
+		player = dao.addPlayer(firstName, lastName, position, number);
+		model.addAttribute("player", player);
+		
+		if(player != null) {
+			return "showplayer";
+		} else { return "addfail"; }
+		
+		
+	}
 	
 }

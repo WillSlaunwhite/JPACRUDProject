@@ -28,9 +28,8 @@ public class Player {
 	
 	public Player() {}
 
-	public Player(int id, String position, int number, String firstName, String lastName) {
+	public Player(String position, String firstName, String lastName, int number) {
 		super();
-		this.id = id;
 		this.position = position;
 		this.number = number;
 		this.firstName = firstName;
@@ -38,10 +37,8 @@ public class Player {
 	}
 
 
-	public Player(int id, String position, int number, int age, int height, int weight, int experience, String college,
-			String firstName, String lastName) {
+	public Player(String position, String firstName, String lastName, int number, int age, int height, int weight, int experience, String college) {
 		super();
-		this.id = id;
 		this.position = position;
 		this.number = number;
 		this.age = age;

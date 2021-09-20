@@ -9,12 +9,12 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"></link>
 	<link rel="stylesheet" href="css/style.css"></link> 
 	<meta charset="UTF-8">
-	<title>${player.firstName}${player.lastName}</title>
+	<title>${player.firstName} ${player.lastName}</title>
 </head>
 <body>
 
 	<div>
-		<h5>${player.number}	${player.position}	${player.firstName}	${player.lastName}</h5>
+		<h2>${player.number}	${player.position}	${player.firstName}	${player.lastName}</h5>
 		<p>Age: ${player.age}	Height: ${player.height}	Weight: ${player.weight}	Years of Experience: ${player.experience}	College: ${player.college}</p>
 	</div>
 

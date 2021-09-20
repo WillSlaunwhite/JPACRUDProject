@@ -8,4 +8,9 @@ public interface PlayerDao {
 	Player findPlayerById(int id);
 	List<Player> findAll();
 	List<Player> findByFirstName(String name);
+	List<Player> findByLastName(String name);
+	List<Player> findByPosition(String position);
+	Player findByNumber(int number);
+	Player addPlayer();
+	Player addPlayer(String firstName, String lastName, String position, int number);
 }

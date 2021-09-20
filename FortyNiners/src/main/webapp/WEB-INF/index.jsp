@@ -13,28 +13,37 @@
 </head>
 <body>
 	<h3>San Francisco 49ers</h3>
-	<form class="form" action="getPlayer.do" method="GET">
+	<form class="form" action="findPlayerById.do" method="GET">
 		Player ID: <input type="text" name="pid" /> <input class="btn-btn-primary" type="submit"
 			value="Show Player" />
 	</form>
-
-
-
+	
+	<br>
+	
+<!-- 
+	Right now, we're going to add a form for every different search method. 
+	Eventually, we should make a drop town tab combined with a search bar.
+ -->
 	<form class="form" action="getPlayerByFirstName.do" method="GET">
-	Player First Name: <input type="text" name="name"/><input class="btn-btn-primary" type="submit" value="Show Players"/>
+	Player First Name: <input type="text" name="name"/><input class="btn-btn-primary" type="submit" value="Search by First Name"/>
 	</form>
 	
+	<br>
 	
-	<%-- div>
-		<c:forEach var="p" items="${players }">
-			<h5>${p}</h5>
-			<h5>${p.firstName} ${p.lastName }</h5>		
-			<div>
-				<h5>${p.number}	${p.position}	${p.firstName}	${p.lastName}</h5>
-				<p>Age: ${p.age}	Height: ${p.height}	Weight: ${p.weight}	Years of Experience: ${p.experience}	College: ${p.college}</p>
-			</div>
-		</c:forEach>
-	</div> --%>
+	<form class="form" action="getPlayerByLastName.do" method="GET">
+	Player Last Name: <input type="text" name="name"/><input class="btn-btn-primary" type="submit" value="Search by Last Name"/>
+	</form>
+	
+	<br><br><br>
+	----- Add a player -----
+	
+	<form class="form" action="addPlayer.do" method="GET">
+	Player First Name: <input type="text" name="firstName"/>	
+	Player Last Name: <input type="text" name="lastName"/><br>	
+	Player Position: <input type="text" name="position"/>		
+	Player Number: <input type="number" name="number"/>
+	<input class="btn-btn-primary" type="submit" value="Add Player"/>
+	</form>
 
 
 

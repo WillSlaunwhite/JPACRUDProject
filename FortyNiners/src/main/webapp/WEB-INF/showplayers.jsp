@@ -5,13 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>San Francisco 49ers</title>
 </head>
 <body>
-<div>
+	<h4>Number of Results: ${players.size() }</h4>
+	<div>
 		<c:forEach var="p" items="${players }">
 			<div>
-				<h5>${p.number}	${p.position}	${p.firstName}	${p.lastName}</h5>
+				<h2>${p.number}	${p.position}	${p.firstName}	${p.lastName}</h5>
 				<p>Age: ${p.age}	Height: ${p.height}	Weight: ${p.weight}	Years of Experience: ${p.experience}	College: ${p.college}</p>
 			</div>
 		</c:forEach>
