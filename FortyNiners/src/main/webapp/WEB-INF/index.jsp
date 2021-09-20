@@ -37,16 +37,38 @@
 	Player Last Name: <input type="text" name="name"/><input class="btn-btn-primary" type="submit" value="Search by Last Name"/>
 	</form>
 	
-	<br><br><br>
+	<br><br>
 	----- Add a player -----
 	
 	<form class="form" action="addPlayer.do" method="GET">
-	Player First Name: <input type="text" name="firstName"/>	
-	Player Last Name: <input type="text" name="lastName"/><br>	
-	Player Position: <input type="text" name="position"/>		
-	Player Number: <input type="number" name="number"/>
+	Player First Name*: <input type="text" name="firstName"/>	
+	Player Last Name*: <input type="text" name="lastName"/>
+	Player Position*: <input type="text" name="position"/><br>	
+	Player Number*: <input type="number" name="number"/>
+	Player Age: <input type="number" name="age"/>
+	Player Weight: <input type="number" name="weight"/><br>
+	Player Experience: <input type="number" name="experience"/>
+	Player College: <input type="text" name="college"/>
 	<input class="btn-btn-primary" type="submit" value="Add Player"/>
 	</form>
+	
+	<br><br>
+	----- Update a player -----
+	
+	<form class="form" action="updatePlayer.do" method="GET">
+	Player First Name*: <input type="text" name="firstName"/>	
+	Player Last Name*: <input type="text" name="lastName"/>
+	Player Position*: <input type="text" name="position"/><br>	
+	Player Number*: <input type="number" name="number"/>
+	Player Age: <input type="number" name="age"/>
+	Player Weight: <input type="number" name="weight"/><br>
+	Player Experience: <input type="number" name="experience"/>
+	Player College: <input type="text" name="college"/>
+	<input class="btn-btn-primary" type="submit" value="Add Player"/>
+	</form>
+	
+	<br><br>
+	----- Remove a player -----
 
 	<form class="form" action="removePlayerByLastName.do" method="GET">
 	Player Last Name: <input type="text" name="lastName"/><br>	

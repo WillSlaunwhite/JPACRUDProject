@@ -62,12 +62,6 @@ public class PlayerDaoImpl implements PlayerDao {
 	}
 	
 	@Override
-	public Player addPlayer() {
-		
-		
-		return null;
-	}
-	@Override
 	public Player addPlayer(String firstName, String lastName, String position, int number) {
 		Player player = new Player();
 		player.setFirstName(firstName);
@@ -75,7 +69,21 @@ public class PlayerDaoImpl implements PlayerDao {
 		player.setNumber(number);
 		player.setPosition(position);
 		em.persist(player);
-		
+		return player;
+	}
+	
+	@Override
+	public Player addPlayer(String firstName, String lastName, String position, int number, int age, int weight, int experience, String college) {
+		Player player = new Player();
+		player.setFirstName(firstName);
+		player.setLastName(lastName);
+		player.setNumber(number);
+		player.setPosition(position);
+		player.setAge(age);
+		player.setExperience(experience);
+		player.setWeight(weight);
+		player.setCollege(college);
+		em.persist(player);
 		return player;
 	}
 
@@ -92,12 +100,38 @@ public class PlayerDaoImpl implements PlayerDao {
 				
 				deletedPlayer = player;
 				em.createQuery("DELETE FROM Player p WHERE p.lastName = :lastname").setParameter("lastname", player.getLastName()).executeUpdate();
-//				em.createQuery(query, Player.class).setParameter("lastname", player.getLastName());
-//				em.createQuery(query).setParameter("lastname", player.getLastName());
 			}
 		}
-//		System.out.println(players);
 		return deletedPlayer;
+	}
+	
+	@Override
+	public Player updatePlayer(String firstName, String lastName, String position, int number) {
+		Player player = em.createQuery("UPDATE Player p SET p.firstName = :fname, p.lastName = :lname, p.position = :position, p.number = :number", Player.class)
+				.setParameter("fname", firstName)
+				.setParameter("lname", lastName)
+				.setParameter("position", position)
+				.setParameter("number", number)
+				.getSingleResult();
+		
+		return player;
+	}
+	
+	@Override
+	public Player updatePlayer(String firstName, String lastName, String position, int number, int age, int weight,
+			int experience, String college) {
+		Player player = em.createQuery("UPDATE Player p SET p.firstName = :fname, p.lastName = :lname, p.position = :position, p.number = :number, p.age = :age, p.weight = :weight, p.experience = :experience, p.college = :college", Player.class)
+				.setParameter("fname", firstName)
+				.setParameter("lname", lastName)
+				.setParameter("position", position)
+				.setParameter("number", number)
+				.setParameter("age", age)
+				.setParameter("weight", weight)
+				.setParameter("experience", experience)
+				.setParameter("college", college)
+				.getSingleResult();
+		
+		return player;
 	}
 	
 	@Override
@@ -111,6 +145,8 @@ public class PlayerDaoImpl implements PlayerDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 	
 }
